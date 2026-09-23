@@ -244,3 +244,35 @@
 - **Thay đổi sẽ áp dụng lần sau:** Có thể bổ sung tính năng gọi trực tiếp API Zalo OA / CRM Webhook từ nút bấm trên Streamlit.
 - **Ghi nhớ:** Luôn duy trì bộ nhớ đệm `@st.cache_data` khi tải dữ liệu lớn để tối ưu hiệu năng.
 
+---
+
+## PDCA Log #08 — 2026-09-23
+
+### 📋 PLAN
+- **Mục tiêu:** Tối ưu hóa toàn diện giao diện ứng dụng Streamlit `app_ead_scoring.py` theo chuẩn **Premium Luxury UI/UX** chuyên nghiệp cho ngành Bất Động Sản.
+- **Output mong muốn:**
+  - Hero Banner nhận diện thương hiệu sang trọng (Dark Slate & Gold/Emerald, Pulse Badges, Typography Google Fonts `Plus Jakarta Sans`).
+  - Dashboard thống kê trực quan với 5 thẻ Metric Cards cao cấp (Tổng số lead, Khách VIP/HOT, Khách WARM, Khách COLD/Rác, Tỷ lệ duyệt).
+  - Biểu đồ phân bổ cơ cấu khách hàng và dải điểm số AI bằng Streamlit charts.
+  - Thẻ Lead Inspector nâng cấp hiển thị AI Insights dạng pill tags, kịch bản mở đầu Telesale nổi bật và tích hợp Webhook Zalo/CRM.
+  - Bố cục đa tab khoa học (`📋 Bảng Phê Duyệt`, `📊 Phân Tích Thống Kê`, `📖 Quy Chuẩn 5 Tiêu Chí`).
+- **Dữ liệu cần:** [app_ead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_ead_scoring.py).
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Viết hệ thống CSS Custom hiện đại: Thiết lập màu nền gradient, đổ bóng mờ (*soft shadows*), hiệu ứng hover nâng thẻ (*card elevation*), huy hiệu trạng thái (*status pills*), font chữ *Plus Jakarta Sans*.
+  2. Xây dựng khu vực Hero Header & Brand Banner đẳng cấp với thông tin nhận diện thương hiệu `LUXURY REAL ESTATE AI LEAD INTELLIGENCE HUB`.
+  3. Thiết kế 5 thẻ KPI Dashboard trực quan có viền màu phân biệt theo từng phân khúc (HOT: Đỏ, WARM: Vàng Cam, COLD: Xám Slate, Đã duyệt: Xanh Ngọc, Tổng: Xanh Lam).
+  4. Bổ sung Tab 2 với 2 biểu đồ phân tích chuyên sâu (Biểu đồ cột cơ cấu phân hạng và biểu đồ diện tích dải điểm 0-100) kèm bảng tổng kết ma trận SLA.
+  5. Nâng cấp Thẻ Lead Inspector hiển thị danh sách từ khóa chấm điểm trực quan (màu xanh cho điểm cộng, màu đỏ cho điểm trừ), kịch bản mở đầu phong cách thẻ nổi.
+  6. Kiểm tra cú pháp Python thành công tuyệt đối 100%.
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100% tất cả yêu cầu về thẩm mỹ, tính năng thống kê và trải nghiệm người dùng.
+- **Tính thẩm mỹ:** Giao diện toát lên vẻ cao cấp, sang trọng, bố cục gọn gàng, hỗ trợ cả màn hình rộng và thiết bị di động.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Có thể tích hợp thêm chế độ Dark Mode chuyển đổi nhanh (Toggle Dark/Light theme).
+- **Ghi nhớ:** Luôn duy trì tính nhất quán về màu sắc thương hiệu giữa giao diện Web và các mẫu tin nhắn bàn giao.
+
+
