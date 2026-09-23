@@ -1,0 +1,110 @@
+﻿{
+    "Month":  "2026-03",
+    "TotalHeadcount":  200,
+    "TotalBase":  3771713639,
+    "TotalBonus":  499094030,
+    "TotalPenalty":  200612662,
+    "TotalNet":  4070195007,
+    "AvgBonusRate":  13.2,
+    "AvgPenaltyRate":  5.3,
+    "Departments":  [
+                        {
+                            "Department":  "Operations",
+                            "Headcount":  48,
+                            "Base_Salary":  936887127,
+                            "Bonus":  119944562,
+                            "Penalty":  53974493,
+                            "Net_Payout":  1002857196,
+                            "Bonus_Rate":  12.8,
+                            "Penalty_Rate":  5.8,
+                            "FilePath":  "outputs\\departments\\Operations_2026-03.csv"
+                        },
+                        {
+                            "Department":  "Sales",
+                            "Headcount":  44,
+                            "Base_Salary":  817369912,
+                            "Bonus":  113017676,
+                            "Penalty":  43105806,
+                            "Net_Payout":  887281782,
+                            "Bonus_Rate":  13.8,
+                            "Penalty_Rate":  5.3,
+                            "FilePath":  "outputs\\departments\\Sales_2026-03.csv"
+                        },
+                        {
+                            "Department":  "Finance",
+                            "Headcount":  50,
+                            "Base_Salary":  908342279,
+                            "Bonus":  108759459,
+                            "Penalty":  42738444,
+                            "Net_Payout":  974363294,
+                            "Bonus_Rate":  12,
+                            "Penalty_Rate":  4.7,
+                            "FilePath":  "outputs\\departments\\Finance_2026-03.csv"
+                        },
+                        {
+                            "Department":  "HR",
+                            "Headcount":  58,
+                            "Base_Salary":  1109114321,
+                            "Bonus":  157372333,
+                            "Penalty":  60793919,
+                            "Net_Payout":  1205692735,
+                            "Bonus_Rate":  14.2,
+                            "Penalty_Rate":  5.5,
+                            "FilePath":  "outputs\\departments\\HR_2026-03.csv"
+                        }
+                    ],
+    "Managers":  [
+                     {
+                         "Manager":  "Manager_B",
+                         "Headcount":  37,
+                         "Base_Salary":  710681754,
+                         "Bonus":  86680561,
+                         "Penalty":  37669431,
+                         "Net_Payout":  759692884,
+                         "Bonus_Rate":  12.2,
+                         "Penalty_Rate":  5.3,
+                         "Top_Bonus_Emp":  "Employee_44 (4,620,772 VND)",
+                         "Top_Penalty_Emp":  "Employee_33 (1,921,143 VND)",
+                         "FilePath":  "outputs\\managers\\Manager_B_2026-03.csv"
+                     },
+                     {
+                         "Manager":  "Manager_A",
+                         "Headcount":  62,
+                         "Base_Salary":  1159186631,
+                         "Bonus":  159356385,
+                         "Penalty":  59168516,
+                         "Net_Payout":  1259374500,
+                         "Bonus_Rate":  13.7,
+                         "Penalty_Rate":  5.1,
+                         "Top_Bonus_Emp":  "Employee_26 (4,991,591 VND)",
+                         "Top_Penalty_Emp":  "Employee_31 (1,993,943 VND)",
+                         "FilePath":  "outputs\\managers\\Manager_A_2026-03.csv"
+                     },
+                     {
+                         "Manager":  "Manager_C",
+                         "Headcount":  51,
+                         "Base_Salary":  1010803313,
+                         "Bonus":  129704785,
+                         "Penalty":  54318283,
+                         "Net_Payout":  1086189815,
+                         "Bonus_Rate":  12.8,
+                         "Penalty_Rate":  5.4,
+                         "Top_Bonus_Emp":  "Employee_124 (4,705,721 VND)",
+                         "Top_Penalty_Emp":  "Employee_95 (1,993,458 VND)",
+                         "FilePath":  "outputs\\managers\\Manager_C_2026-03.csv"
+                     },
+                     {
+                         "Manager":  "Manager_D",
+                         "Headcount":  50,
+                         "Base_Salary":  891041941,
+                         "Bonus":  123352299,
+                         "Penalty":  49456432,
+                         "Net_Payout":  964937808,
+                         "Bonus_Rate":  13.8,
+                         "Penalty_Rate":  5.6,
+                         "Top_Bonus_Emp":  "Employee_68 (4,891,876 VND)",
+                         "Top_Penalty_Emp":  "Employee_48 (1,933,297 VND)",
+                         "FilePath":  "outputs\\managers\\Manager_D_2026-03.csv"
+                     }
+                 ]
+}

@@ -1,0 +1,226 @@
+﻿{
+    "month":  "2026-08",
+    "processed_at":  "2026-09-09 07:38:51",
+    "total_headcount":  12,
+    "total_tasks":  53,
+    "total_completed":  41,
+    "total_in_progress":  3,
+    "total_delayed":  9,
+    "total_output":  267002322,
+    "overall_completion_rate":  77.4,
+    "overall_delay_rate":  17,
+    "health_score":  66,
+    "best_department":  "Vận Hành",
+    "top_performers":  [
+                           {
+                               "employee_id":  "NV003",
+                               "employee_name":  "Lê Hoàng Cường",
+                               "department":  "Kinh Doanh",
+                               "completed":  4,
+                               "output":  128000000,
+                               "rate":  100
+                           },
+                           {
+                               "employee_id":  "NV001",
+                               "employee_name":  "Nguyễn Văn An",
+                               "department":  "Kinh Doanh",
+                               "completed":  4,
+                               "output":  97000000,
+                               "rate":  80
+                           },
+                           {
+                               "employee_id":  "NV002",
+                               "employee_name":  "Trần Thị Bích",
+                               "department":  "Kinh Doanh",
+                               "completed":  3,
+                               "output":  42000000,
+                               "rate":  75
+                           }
+                       ],
+    "departments":  [
+                        {
+                            "department":  "Kinh Doanh",
+                            "slug":  "Kinh_Doanh",
+                            "headcount":  3,
+                            "total_tasks":  13,
+                            "completed":  11,
+                            "in_progress":  1,
+                            "delayed":  1,
+                            "completion_rate":  84.6,
+                            "delay_rate":  7.7,
+                            "total_output":  267000000,
+                            "status_rating":  "Normal (Healthy)",
+                            "file_path":  "outputs\\departments\\Kinh_Doanh_2026-08.csv",
+                            "employees":  [
+                                              {
+                                                  "employee_id":  "NV003",
+                                                  "employee_name":  "Lê Hoàng Cường",
+                                                  "total_tasks":  4,
+                                                  "completed":  4,
+                                                  "in_progress":  0,
+                                                  "delayed":  0,
+                                                  "output":  128000000,
+                                                  "rate":  100
+                                              },
+                                              {
+                                                  "employee_id":  "NV001",
+                                                  "employee_name":  "Nguyễn Văn An",
+                                                  "total_tasks":  5,
+                                                  "completed":  4,
+                                                  "in_progress":  1,
+                                                  "delayed":  0,
+                                                  "output":  97000000,
+                                                  "rate":  80
+                                              },
+                                              {
+                                                  "employee_id":  "NV002",
+                                                  "employee_name":  "Trần Thị Bích",
+                                                  "total_tasks":  4,
+                                                  "completed":  3,
+                                                  "in_progress":  0,
+                                                  "delayed":  1,
+                                                  "output":  42000000,
+                                                  "rate":  75
+                                              }
+                                          ]
+                        },
+                        {
+                            "department":  "Kỹ Thuật",
+                            "slug":  "Ky_Thuat",
+                            "headcount":  3,
+                            "total_tasks":  13,
+                            "completed":  8,
+                            "in_progress":  1,
+                            "delayed":  4,
+                            "completion_rate":  61.5,
+                            "delay_rate":  30.8,
+                            "total_output":  133,
+                            "status_rating":  "Red (High Risk)",
+                            "file_path":  "outputs\\departments\\Ky_Thuat_2026-08.csv",
+                            "employees":  [
+                                              {
+                                                  "employee_id":  "NV005",
+                                                  "employee_name":  "Võ Hoàng Giang",
+                                                  "total_tasks":  4,
+                                                  "completed":  3,
+                                                  "in_progress":  0,
+                                                  "delayed":  1,
+                                                  "output":  41,
+                                                  "rate":  75
+                                              },
+                                              {
+                                                  "employee_id":  "NV004",
+                                                  "employee_name":  "Phạm Minh Đức",
+                                                  "total_tasks":  5,
+                                                  "completed":  3,
+                                                  "in_progress":  1,
+                                                  "delayed":  1,
+                                                  "output":  50,
+                                                  "rate":  60
+                                              },
+                                              {
+                                                  "employee_id":  "NV006",
+                                                  "employee_name":  "Đỗ Thị Hạnh",
+                                                  "total_tasks":  4,
+                                                  "completed":  2,
+                                                  "in_progress":  0,
+                                                  "delayed":  2,
+                                                  "output":  42,
+                                                  "rate":  50
+                                              }
+                                          ]
+                        },
+                        {
+                            "department":  "Vận Hành",
+                            "slug":  "Van_Hanh",
+                            "headcount":  3,
+                            "total_tasks":  14,
+                            "completed":  13,
+                            "in_progress":  0,
+                            "delayed":  1,
+                            "completion_rate":  92.9,
+                            "delay_rate":  7.1,
+                            "total_output":  684,
+                            "status_rating":  "Normal (Healthy)",
+                            "file_path":  "outputs\\departments\\Van_Hanh_2026-08.csv",
+                            "employees":  [
+                                              {
+                                                  "employee_id":  "NV007",
+                                                  "employee_name":  "Bùi Quang Huy",
+                                                  "total_tasks":  5,
+                                                  "completed":  5,
+                                                  "in_progress":  0,
+                                                  "delayed":  0,
+                                                  "output":  260,
+                                                  "rate":  100
+                                              },
+                                              {
+                                                  "employee_id":  "NV009",
+                                                  "employee_name":  "Ngô Bảo Long",
+                                                  "total_tasks":  4,
+                                                  "completed":  4,
+                                                  "in_progress":  0,
+                                                  "delayed":  0,
+                                                  "output":  225,
+                                                  "rate":  100
+                                              },
+                                              {
+                                                  "employee_id":  "NV008",
+                                                  "employee_name":  "Hoàng Kim Khánh",
+                                                  "total_tasks":  5,
+                                                  "completed":  4,
+                                                  "in_progress":  0,
+                                                  "delayed":  1,
+                                                  "output":  199,
+                                                  "rate":  80
+                                              }
+                                          ]
+                        },
+                        {
+                            "department":  "Chăm Sóc Khách Hàng",
+                            "slug":  "Cham_Soc_Khach_Hang",
+                            "headcount":  3,
+                            "total_tasks":  13,
+                            "completed":  9,
+                            "in_progress":  1,
+                            "delayed":  3,
+                            "completion_rate":  69.2,
+                            "delay_rate":  23.1,
+                            "total_output":  1505,
+                            "status_rating":  "Red (High Risk)",
+                            "file_path":  "outputs\\departments\\Cham_Soc_Khach_Hang_2026-08.csv",
+                            "employees":  [
+                                              {
+                                                  "employee_id":  "NV011",
+                                                  "employee_name":  "Trịnh Phương Oanh",
+                                                  "total_tasks":  4,
+                                                  "completed":  3,
+                                                  "in_progress":  0,
+                                                  "delayed":  1,
+                                                  "output":  475,
+                                                  "rate":  75
+                                              },
+                                              {
+                                                  "employee_id":  "NV012",
+                                                  "employee_name":  "Vũ Đức Phúc",
+                                                  "total_tasks":  4,
+                                                  "completed":  3,
+                                                  "in_progress":  0,
+                                                  "delayed":  1,
+                                                  "output":  430,
+                                                  "rate":  75
+                                              },
+                                              {
+                                                  "employee_id":  "NV010",
+                                                  "employee_name":  "Đặng Thu Nga",
+                                                  "total_tasks":  5,
+                                                  "completed":  3,
+                                                  "in_progress":  1,
+                                                  "delayed":  1,
+                                                  "output":  600,
+                                                  "rate":  60
+                                              }
+                                          ]
+                        }
+                    ]
+}

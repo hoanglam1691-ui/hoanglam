@@ -1,0 +1,54 @@
+employee_id,employee_name,department,record_date,output_units,task_status
+NV001,Nguyễn Văn An,Kinh Doanh,2026-08-02,15000000,Completed
+NV001,Nguyễn Văn An,Kinh Doanh,2026-08-05,22000000,Completed
+NV001,Nguyễn Văn An,Kinh Doanh,2026-08-12,18000000,Completed
+NV001,Nguyễn Văn An,Kinh Doanh,2026-08-19,30000000,Completed
+NV001,Nguyễn Văn An,Kinh Doanh,2026-08-25,12000000,In Progress
+NV002,Trần Thị Bích,Kinh Doanh,2026-08-03,8000000,Completed
+NV002,Trần Thị Bích,Kinh Doanh,2026-08-10,14000000,Completed
+NV002,Trần Thị Bích,Kinh Doanh,2026-08-16,9000000,Delayed
+NV002,Trần Thị Bích,Kinh Doanh,2026-08-22,11000000,Completed
+NV003,Lê Hoàng Cường,Kinh Doanh,2026-08-04,25000000,Completed
+NV003,Lê Hoàng Cường,Kinh Doanh,2026-08-11,28000000,Completed
+NV003,Lê Hoàng Cường,Kinh Doanh,2026-08-18,35000000,Completed
+NV003,Lê Hoàng Cường,Kinh Doanh,2026-08-28,40000000,Completed
+NV004,Phạm Minh Đức,Kỹ Thuật,2026-08-01,8,Completed
+NV004,Phạm Minh Đức,Kỹ Thuật,2026-08-06,12,Completed
+NV004,Phạm Minh Đức,Kỹ Thuật,2026-08-14,10,Delayed
+NV004,Phạm Minh Đức,Kỹ Thuật,2026-08-20,15,Completed
+NV004,Phạm Minh Đức,Kỹ Thuật,2026-08-27,5,In Progress
+NV005,Võ Hoàng Giang,Kỹ Thuật,2026-08-02,10,Completed
+NV005,Võ Hoàng Giang,Kỹ Thuật,2026-08-08,14,Completed
+NV005,Võ Hoàng Giang,Kỹ Thuật,2026-08-15,6,Delayed
+NV005,Võ Hoàng Giang,Kỹ Thuật,2026-08-23,11,Completed
+NV006,Đỗ Thị Hạnh,Kỹ Thuật,2026-08-03,9,Completed
+NV006,Đỗ Thị Hạnh,Kỹ Thuật,2026-08-09,12,Delayed
+NV006,Đỗ Thị Hạnh,Kỹ Thuật,2026-08-17,7,Delayed
+NV006,Đỗ Thị Hạnh,Kỹ Thuật,2026-08-26,14,Completed
+NV007,Bùi Quang Huy,Vận Hành,2026-08-01,45,Completed
+NV007,Bùi Quang Huy,Vận Hành,2026-08-07,52,Completed
+NV007,Bùi Quang Huy,Vận Hành,2026-08-13,60,Completed
+NV007,Bùi Quang Huy,Vận Hành,2026-08-21,48,Completed
+NV007,Bùi Quang Huy,Vận Hành,2026-08-29,55,Completed
+NV008,Hoàng Kim Khánh,Vận Hành,2026-08-02,38,Completed
+NV008,Hoàng Kim Khánh,Vận Hành,2026-08-08,42,Completed
+NV008,Hoàng Kim Khánh,Vận Hành,2026-08-15,40,Completed
+NV008,Hoàng Kim Khánh,Vận Hành,2026-08-22,35,Delayed
+NV008,Hoàng Kim Khánh,Vận Hành,2026-08-30,44,Completed
+NV009,Ngô Bảo Long,Vận Hành,2026-08-04,50,Completed
+NV009,Ngô Bảo Long,Vận Hành,2026-08-11,55,Completed
+NV009,Ngô Bảo Long,Vận Hành,2026-08-18,62,Completed
+NV009,Ngô Bảo Long,Vận Hành,2026-08-25,58,Completed
+NV010,Đặng Thu Nga,Chăm Sóc Khách Hàng,2026-08-01,120,Completed
+NV010,Đặng Thu Nga,Chăm Sóc Khách Hàng,2026-08-07,135,Completed
+NV010,Đặng Thu Nga,Chăm Sóc Khách Hàng,2026-08-14,110,Delayed
+NV010,Đặng Thu Nga,Chăm Sóc Khách Hàng,2026-08-21,140,Completed
+NV010,Đặng Thu Nga,Chăm Sóc Khách Hàng,2026-08-28,95,In Progress
+NV011,Trịnh Phương Oanh,Chăm Sóc Khách Hàng,2026-08-03,115,Completed
+NV011,Trịnh Phương Oanh,Chăm Sóc Khách Hàng,2026-08-10,125,Completed
+NV011,Trịnh Phương Oanh,Chăm Sóc Khách Hàng,2026-08-17,105,Delayed
+NV011,Trịnh Phương Oanh,Chăm Sóc Khách Hàng,2026-08-24,130,Completed
+NV012,Vũ Đức Phúc,Chăm Sóc Khách Hàng,2026-08-05,100,Completed
+NV012,Vũ Đức Phúc,Chăm Sóc Khách Hàng,2026-08-12,110,Completed
+NV012,Vũ Đức Phúc,Chăm Sóc Khách Hàng,2026-08-19,105,Delayed
+NV012,Vũ Đức Phúc,Chăm Sóc Khách Hàng,2026-08-26,115,Completed

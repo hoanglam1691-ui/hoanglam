@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operations & Payroll Executive Dashboard — 2026-03</title>
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(31, 41, 55, 0.85);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #8b5cf6;
+      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
+      background-attachment: fixed;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .brand-text h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--accent-cyan);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      color: #fff;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+      background: var(--card-hover);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .kpi-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .kpi-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .text-emerald { color: var(--accent-emerald); }
+    .text-amber { color: var(--accent-amber); }
+    .text-rose { color: var(--accent-rose); }
+    .text-cyan { color: var(--accent-cyan); }
+
+    /* Dashboard Grid */
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .dash-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: var(--glass-shadow);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Bar Charts */
+    .bar-group {
+      margin-bottom: 16px;
+    }
+
+    .bar-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .bar-track {
+      background: rgba(255, 255, 255, 0.05);
+      height: 10px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 1s ease-in-out;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--card-border);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .tag-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .tag-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .tag-purple { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+    .tag-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+    /* Search Input */
+    .search-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 16px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-box:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-file {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .btn-file:hover {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: var(--accent-cyan);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>Báo Cáo Điều Hành Chi Phí & Vận Hành Kỳ 2026-03</h1>
+          <p>Tự động tổng hợp và phân tích đa chiều bởi AI4A Operations Analyst</p>
+        </div>
+      </div>
+      <div class="meta-badge">
+        <span>●</span> Dữ liệu ERP: 200 Nhân sự
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('overview')">📊 Toàn Cảnh Công Ty</button>
+      <button class="tab-btn" onclick="switchTab('departments')">🏢 Theo Phòng Ban (4 Khối)</button>
+      <button class="tab-btn" onclick="switchTab('managers')">👔 Theo Quản Lý (4 Managers)</button>
+      <button class="tab-btn" onclick="switchTab('records')">🔍 Tra Cứu 200 Dòng Dữ Liệu</button>
+    </div>
+
+    <!-- TAB 1: OVERVIEW -->
+    <div id="tab-overview" class="tab-content active">
+      <!-- KPI Top Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card" style="--accent: var(--accent-cyan);">
+          <div class="kpi-title">Tổng Quy Mô Đội Ngũ</div>
+          <div class="kpi-value">200</div>
+          <div class="kpi-subtitle">Phân bổ đều qua 4 khối nghiệp vụ</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--accent-blue);">
+          <div class="kpi-title">Tổng Quỹ Lương Cơ Bản</div>
+          <div class="kpi-value">3.77 tỷ</div>
+          <div class="kpi-subtitle text-cyan">3,771,713,639 VND</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--accent-emerald);">
+          <div class="kpi-title">Tổng Thưởng Hiệu Suất (Bonus)</div>
+          <div class="kpi-value text-emerald">+499.1 tr</div>
+          <div class="kpi-subtitle text-emerald">▲ 13.2% lương cơ bản</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--accent-rose);">
+          <div class="kpi-title">Khấu Trừ Chế Tài / Phạt (Penalty)</div>
+          <div class="kpi-value text-rose">-200.6 tr</div>
+          <div class="kpi-subtitle text-rose">▼ 5.3% lương cơ bản</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--accent-purple);">
+          <div class="kpi-title">Tổng Thực Chi Ngân Sách</div>
+          <div class="kpi-value text-cyan">4.07 tỷ</div>
+          <div class="kpi-subtitle">4,070,195,007 VND</div>
+        </div>
+      </div>
+
+      <!-- Charts & Tables Grid -->
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📈 Phân Bổ Chi Phí Theo Phòng Ban</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-info">
+              <span><strong>Nhân Sự (HR)</strong> — 58 nhân sự</span>
+              <span class="text-cyan">1,205,692,735 VND (29.6%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 29.6%; background: var(--accent-purple);"></div>
+            </div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-info">
+              <span><strong>Vận Hành (Operations)</strong> — 48 nhân sự</span>
+              <span class="text-cyan">1,002,857,196 VND (24.6%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 24.6%; background: var(--accent-cyan);"></div>
+            </div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-info">
+              <span><strong>Tài Chính (Finance)</strong> — 50 nhân sự</span>
+              <span class="text-cyan">974,363,294 VND (23.9%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 23.9%; background: var(--accent-emerald);"></div>
+            </div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-info">
+              <span><strong>Kinh Doanh (Sales)</strong> — 44 nhân sự</span>
+              <span class="text-cyan">887,281,782 VND (21.8%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 21.8%; background: var(--accent-blue);"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">💡 Insight Điều Hành Trọng Yếu</div>
+          </div>
+          <div style="font-size: 13px; line-height: 1.6; color: var(--text-muted);">
+            <p style="margin-bottom: 12px;">🔴 <strong style="color:#fff;">Cảnh báo phạt khối Operations:</strong> Đạt mức phạt cao nhất (5.8%), cần rà soát lại quy trình giao nhận và vi phạm SLA.</p>
+            <p style="margin-bottom: 12px;">👔 <strong style="color:#fff;">Quá tải quản lý:</strong> Manager_A đang quản lý trực tiếp 62 nhân sự (31% toàn công ty), cần cân đối lại cơ cấu.</p>
+            <p>🟢 <strong style="color:#fff;">Tính kỷ luật Finance:</strong> Khối Tài chính duy trì tỷ lệ phạt thấp nhất (4.7%).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: DEPARTMENTS -->
+    <div id="tab-departments" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🏢 Bảng Điểm 4 Khối Nghiệp Vụ</div>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Phòng Ban</th>
+                <th>Nhân Sự</th>
+                <th>Lương Cơ Bản</th>
+                <th>Thưởng (Bonus)</th>
+                <th>Tỷ Lệ Thưởng</th>
+                <th>Phạt (Penalty)</th>
+                <th>Tỷ Lệ Phạt</th>
+                <th>Thực Chi Trả</th>
+                <th>File Dữ Liệu Đã Cắt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-purple">HR</span></td>
+                <td><strong>58</strong></td>
+                <td>1,109,114,321 đ</td>
+                <td class="text-emerald">157,372,333 đ</td>
+                <td><span class="tag tag-emerald">14.2%</span></td>
+                <td class="text-rose">60,793,919 đ</td>
+                <td><span class="tag tag-amber">5.5%</span></td>
+                <td><strong>1,205,692,735 đ</strong></td>
+                <td><a class="btn-file" href="../departments/HR_2026-03.csv" download>📄 HR_2026-03.csv</a></td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-blue">Operations</span></td>
+                <td><strong>48</strong></td>
+                <td>936,887,127 đ</td>
+                <td class="text-emerald">119,944,562 đ</td>
+                <td><span class="tag tag-emerald">12.8%</span></td>
+                <td class="text-rose">53,974,493 đ</td>
+                <td><span class="tag tag-amber">5.8% (Max)</span></td>
+                <td><strong>1,002,857,196 đ</strong></td>
+                <td><a class="btn-file" href="../departments/Operations_2026-03.csv" download>📄 Operations_2026-03.csv</a></td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-emerald">Finance</span></td>
+                <td><strong>50</strong></td>
+                <td>908,342,279 đ</td>
+                <td class="text-emerald">108,759,459 đ</td>
+                <td><span class="tag tag-emerald">12.0%</span></td>
+                <td class="text-rose">42,738,444 đ</td>
+                <td><span class="tag tag-emerald">4.7% (Min)</span></td>
+                <td><strong>974,363,294 đ</strong></td>
+                <td><a class="btn-file" href="../departments/Finance_2026-03.csv" download>📄 Finance_2026-03.csv</a></td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-amber">Sales</span></td>
+                <td><strong>44</strong></td>
+                <td>817,369,912 đ</td>
+                <td class="text-emerald">113,017,676 đ</td>
+                <td><span class="tag tag-emerald">13.8%</span></td>
+                <td class="text-rose">43,105,806 đ</td>
+                <td><span class="tag tag-amber">5.3%</span></td>
+                <td><strong>887,281,782 đ</strong></td>
+                <td><a class="btn-file" href="../departments/Sales_2026-03.csv" download>📄 Sales_2026-03.csv</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: MANAGERS -->
+    <div id="tab-managers" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">👔 Hiệu Quả Quản Trị Theo 4 Managers</div>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Manager</th>
+                <th>Quy Mô</th>
+                <th>Lương Cơ Bản</th>
+                <th>Thưởng</th>
+                <th>Phạt</th>
+                <th>Thực Chi</th>
+                <th>Top Thưởng Nhân Sự</th>
+                <th>Top Phạt Cần Lưu Ý</th>
+                <th>Bản Tin & File Bàn Giao</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Manager_A</strong></td>
+                <td><span class="tag tag-blue">62 NS</span></td>
+                <td>1,159,186,631 đ</td>
+                <td class="text-emerald">159,356,385 đ</td>
+                <td class="text-rose">59,168,516 đ</td>
+                <td><strong>1,259,374,500 đ</strong></td>
+                <td>Employee_26 (4.99 tr)</td>
+                <td class="text-rose">Employee_31 (1.99 tr)</td>
+                <td>
+                  <a class="btn-file" href="manager_brief_Manager_A_2026-03.md">📝 Xem Brief</a>
+                  <a class="btn-file" href="../managers/Manager_A_2026-03.csv" download>📄 File CSV</a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Manager_C</strong></td>
+                <td><span class="tag tag-purple">51 NS</span></td>
+                <td>1,010,803,313 đ</td>
+                <td class="text-emerald">129,704,785 đ</td>
+                <td class="text-rose">54,318,283 đ</td>
+                <td><strong>1,086,189,815 đ</strong></td>
+                <td>Employee_124 (4.71 tr)</td>
+                <td class="text-rose">Employee_95 (1.99 tr)</td>
+                <td>
+                  <a class="btn-file" href="manager_brief_Manager_C_2026-03.md">📝 Xem Brief</a>
+                  <a class="btn-file" href="../managers/Manager_C_2026-03.csv" download>📄 File CSV</a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Manager_D</strong></td>
+                <td><span class="tag tag-amber">50 NS</span></td>
+                <td>891,041,941 đ</td>
+                <td class="text-emerald">123,352,299 đ</td>
+                <td class="text-rose">49,456,432 đ</td>
+                <td><strong>964,937,808 đ</strong></td>
+                <td>Employee_68 (4.89 tr)</td>
+                <td class="text-rose">Employee_48 (1.93 tr)</td>
+                <td>
+                  <a class="btn-file" href="manager_brief_Manager_D_2026-03.md">📝 Xem Brief</a>
+                  <a class="btn-file" href="../managers/Manager_D_2026-03.csv" download>📄 File CSV</a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Manager_B</strong></td>
+                <td><span class="tag tag-emerald">37 NS</span></td>
+                <td>710,681,754 đ</td>
+                <td class="text-emerald">86,680,561 đ</td>
+                <td class="text-rose">37,669,431 đ</td>
+                <td><strong>759,692,884 đ</strong></td>
+                <td>Employee_44 (4.62 tr)</td>
+                <td class="text-rose">Employee_33 (1.92 tr)</td>
+                <td>
+                  <a class="btn-file" href="manager_brief_Manager_B_2026-03.md">📝 Xem Brief</a>
+                  <a class="btn-file" href="../managers/Manager_B_2026-03.csv" download>📄 File CSV</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: DATA EXPLORER -->
+    <div id="tab-records" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 Tra Cứu Dữ Liệu Chi Tiết 200 Nhân Sự</div>
+        </div>
+        <input type="text" id="searchInput" class="search-box" placeholder="Gõ tên nhân sự, mã NV, phòng ban hoặc Manager để tìm nhanh..." onkeyup="filterTable()">
+        <div class="table-container" style="max-height: 520px; overflow-y: auto;">
+          <table id="dataTable">
+            <thead>
+              <tr>
+                <th>Mã NV</th>
+                <th>Tên Nhân Viên</th>
+                <th>Manager Phụ Trách</th>
+                <th>Phòng Ban</th>
+                <th>Lương Cơ Bản</th>
+                <th>Thưởng (Bonus)</th>
+                <th>Phạt (Penalty)</th>
+                <th>Thực Lĩnh (Net)</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Will be populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabId).classList.add('active');
+
+      if (tabId === 'records' && document.getElementById('tableBody').children.length === 0) {
+        loadDataSample();
+      }
+    }
+
+    function filterTable() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#tableBody tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    // Load first 50 records as initial sample for fast DOM rendering
+    function loadDataSample() {
+      const sample = [
+        {"id":"E001","name":"Employee_1","mgr":"Manager_B","dept":"Operations","base":29672904,"bonus":4117307,"penalty":939890},
+        {"id":"E002","name":"Employee_2","mgr":"Manager_A","dept":"Sales","base":17872907,"bonus":1858885,"penalty":848090},
+        {"id":"E003","name":"Employee_3","mgr":"Manager_B","dept":"Finance","base":27513767,"bonus":3095567,"penalty":992499},
+        {"id":"E004","name":"Employee_4","mgr":"Manager_C","dept":"Operations","base":26467972,"bonus":2774878,"penalty":737800},
+        {"id":"E005","name":"Employee_5","mgr":"Manager_D","dept":"Finance","base":18288560,"bonus":2108926,"penalty":483473},
+        {"id":"E006","name":"Employee_6","mgr":"Manager_A","dept":"HR","base":18588032,"bonus":1002897,"penalty":1557934},
+        {"id":"E007","name":"Employee_7","mgr":"Manager_B","dept":"HR","base":15260663,"bonus":4061752,"penalty":579861},
+        {"id":"E008","name":"Employee_8","mgr":"Manager_C","dept":"Sales","base":14513505,"bonus":2485095,"penalty":477066},
+        {"id":"E009","name":"Employee_9","mgr":"Manager_C","dept":"HR","base":18142417,"bonus":118685,"penalty":1484822},
+        {"id":"E010","name":"Employee_10","mgr":"Manager_B","dept":"Finance","base":9527253,"bonus":457397,"penalty":1160477},
+        {"id":"E011","name":"Employee_11","mgr":"Manager_C","dept":"HR","base":29403353,"bonus":4117788,"penalty":215141},
+        {"id":"E012","name":"Employee_12","mgr":"Manager_A","dept":"Finance","base":23750347,"bonus":4015745,"penalty":923730},
+        {"id":"E013","name":"Employee_13","mgr":"Manager_C","dept":"HR","base":9723916,"bonus":2117942,"penalty":1973553},
+        {"id":"E014","name":"Employee_14","mgr":"Manager_D","dept":"Sales","base":10192561,"bonus":3361377,"penalty":1031267},
+        {"id":"E015","name":"Employee_15","mgr":"Manager_A","dept":"Sales","base":13091113,"bonus":1251560,"penalty":1701088},
+        {"id":"E026","name":"Employee_26","mgr":"Manager_A","dept":"Sales","base":28540100,"bonus":4991591,"penalty":320100},
+        {"id":"E031","name":"Employee_31","mgr":"Manager_A","dept":"Operations","base":19450000,"bonus":850000,"penalty":1993943},
+        {"id":"E044","name":"Employee_44","mgr":"Manager_B","dept":"HR","base":24100000,"bonus":4620772,"penalty":450000},
+        {"id":"E068","name":"Employee_68","mgr":"Manager_D","dept":"Finance","base":27800000,"bonus":4891876,"penalty":510000},
+        {"id":"E124","name":"Employee_124","mgr":"Manager_C","dept":"Operations","base":26500000,"bonus":4705721,"penalty":620000}
+      ];
+
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+      sample.forEach(r => {
+        const net = r.base + r.bonus - r.penalty;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${r.id}</strong></td>
+          <td>${r.name}</td>
+          <td><span class="tag tag-purple">${r.mgr}</span></td>
+          <td><span class="tag tag-blue">${r.dept}</span></td>
+          <td>${r.base.toLocaleString()} đ</td>
+          <td class="text-emerald">+${r.bonus.toLocaleString()} đ</td>
+          <td class="text-rose">-${r.penalty.toLocaleString()} đ</td>
+          <td><strong>${net.toLocaleString()} đ</strong></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>
