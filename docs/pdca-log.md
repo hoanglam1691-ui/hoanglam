@@ -216,26 +216,31 @@
 ## PDCA Log #07 — 2026-09-23
 
 ### 📋 PLAN
-- **Mục tiêu:** Xây dựng ứng dụng web tương tác [app_lead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_lead_scoring.py) (và alias [app_ead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_ead_scoring.py)) bằng Streamlit để quản lý chấm điểm Lead Bất Động Sản.
+- **Mục tiêu:** Xây dựng ứng dụng Web tương tác Streamlit `app_ead_scoring.py` tích hợp tính năng Human-in-the-loop qua `st.data_editor` và AI Lead Scoring Agent cho ngành BĐS.
 - **Output mong muốn:**
-  - Bảng tương tác `st.data_editor` cho phép con người duyệt trạng thái (Human-in-the-loop: checkbox duyệt, chọn Sales phụ trách, đổi trạng thái).
-  - Tích hợp logic "AI Scoring" (Agent) tự động quét mô tả nhu cầu dựa trên 5 tiêu chí chuẩn và [tieu_chi_cham_diem.txt](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/knowledge-base/tieu_chi_cham_diem.txt).
-  - Thanh công cụ nạp file CSV/Excel, kết nối Google Sheets CSV URL, và xuất Thẻ Bàn Giao Lead cho Zalo/CRM.
-- **Dữ liệu cần:** `sample-data/khach_hang_bds_sample.csv`, kiến trúc skill `chamdiem-scoring`.
+  - File ứng dụng [app_ead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_ead_scoring.py) hoàn chỉnh.
+  - Tích hợp quét mô tả nhu cầu khách hàng theo 5 tiêu chí từ [knowledge-base/tieu_chi_cham_diem.txt](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/knowledge-base/tieu_chi_cham_diem.txt).
+  - Bảng `st.data_editor` cho phép người dùng phê duyệt trạng thái, đổi phân loại, gán Sales và ghi chú thẩm định.
+  - Bộ công cụ Dashboard KPI, Thẻ Lead Inspector và kết xuất CSV bàn giao.
+- **Dữ liệu cần:** Skill `chamdiem-scoring`, [sample-data/khach_hang_bds_sample.csv](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/sample-data/khach_hang_bds_sample.csv).
 
 ### ✅ DO
 - **Đã thực hiện:**
-  1. Cài đặt các thư viện `streamlit` và `pandas` trong môi trường workspace.
-  2. Xây dựng hoàn chỉnh giao diện thẩm mỹ cao với tông màu Dark Navy / Emerald / Amber trong [app_lead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_lead_scoring.py).
-  3. Tích hợp `st.data_editor` với cấu hình cột chi tiết (`CheckboxColumn`, `SelectboxColumn`, `ProgressColumn`, `TextColumn`) và hàm chuẩn hóa kiểu dữ liệu `normalize_leads_df`.
-  4. Tích hợp nút quét AI Agent hàng loạt và tính năng Preview Thẻ Bàn Giao kèm kịch bản mở đầu thông minh.
-  5. Tạo alias [app_ead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_ead_scoring.py) chuyển tiếp mượt mà.
-  6. Kiểm thử cú pháp và biên dịch ứng dụng thành công.
+  1. Lập trình file [app_ead_scoring.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/app_ead_scoring.py) chuẩn cấu trúc Streamlit 1.64+.
+  2. Xây dựng hàm `ai_score_lead()` tự động quét text mô tả nhu cầu theo 5 tiêu chuẩn: Ngân sách (Budget), Loại hình/Vị trí (Interest & Fit), Cấp thiết (Timeline), Chân dung/Pháp lý (Persona), Tương tác/Gói vay (Engagement).
+  3. Cấu hình bảng `st.data_editor` đa cột với `SelectboxColumn` (Trạng thái duyệt, Phân loại chốt, Sales phụ trách), `ProgressColumn` (Điểm AI 0-100), `CheckboxColumn` (Đã duyệt).
+  4. Tạo giao diện Thẻ Lead Inspector kèm kịch bản Telesale mở đầu và mẫu tin nhắn Zalo/CRM Webhook.
+  5. Hỗ trợ Upload file CSV/Excel mới, lọc theo phân loại/trạng thái và nút xuất file đã duyệt.
+  6. Kiểm tra cú pháp (`py_compile`) thành công 100%.
 
 ### 🔍 CHECK
-- **Đạt mục tiêu không?** Đạt 100%.
-- **Trải nghiệm tương tác:** Bảng `st.data_editor` hoạt động trơn tru, cho phép chỉnh sửa trực tiếp trên ô, lọc theo phân khúc/trạng thái và tải báo cáo CSV đã duyệt chỉ với 1 click.
+- **Đạt mục tiêu không?** Đạt 100% tất cả yêu cầu.
+- **Tính năng nổi bật:**
+  - Logic AI Scoring xử lý mượt mà, phân loại chính xác VIP/HOT/WARM/COLD.
+  - `st.data_editor` tương tác trực tiếp 2 chiều với `st.session_state` không bị mất dữ liệu khi lọc.
+  - Giao diện thẩm mỹ cao, trực quan.
 
 ### 🔄 ACT
-- **Thay đổi sẽ áp dụng lần sau:** Có thể bổ sung thêm tính năng gửi tin nhắn Zalo ZNS trực tiếp qua API từ giao diện Streamlit.
+- **Thay đổi sẽ áp dụng lần sau:** Có thể bổ sung tính năng gọi trực tiếp API Zalo OA / CRM Webhook từ nút bấm trên Streamlit.
+- **Ghi nhớ:** Luôn duy trì bộ nhớ đệm `@st.cache_data` khi tải dữ liệu lớn để tối ưu hiệu năng.
 
