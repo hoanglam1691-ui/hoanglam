@@ -1,0 +1,17 @@
+{
+  "updated_at": "2026-10-05",
+  "high_risk_suppliers": [
+    {
+      "mst": "0109999999",
+      "company_name": "CÔNG TY TNHH THƯƠNG MẠI MA XUẤT KHẨU KHỐNG",
+      "reason": "Doanh nghiệp có thông báo không hoạt động tại địa chỉ đăng ký (Bỏ trốn)",
+      "risk_level": "CRITICAL"
+    },
+    {
+      "mst": "0308888888",
+      "company_name": "CÔNG TY CP DỊCH VỤ ẢO VIỆT",
+      "reason": "Cơ quan thuế tạm dừng mã số thuế do nghi vấn mua bán hóa đơn",
+      "risk_level": "HIGH"
+    }
+  ]
+}
