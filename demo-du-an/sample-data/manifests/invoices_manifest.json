@@ -1,0 +1,53 @@
+{
+  "batch_id": "BATCH_20261005_001",
+  "generated_at": "2026-10-05T21:30:00",
+  "query_period": {
+    "from_date": "01/04/2026",
+    "to_date": "30/06/2026"
+  },
+  "total_records": 3,
+  "items": [
+    {
+      "invoice_uid": "0101893254_C26TCK_0000302",
+      "nbmst": "0101893254",
+      "nbten": "CÔNG TY TNHH PHÁT TRIỂN CƠ KHÍ NAM HÀ NỘI",
+      "khmshdon": "1",
+      "khhdon": "C26TCK",
+      "shdon": "0000302",
+      "tdlap": "2026-06-30",
+      "tgtttbso": 16894500,
+      "tgtthue": 1689450,
+      "tgtttoan": 18583950,
+      "mccqt": "00DB34DD7366F44BACB062F6A3F80E9CFB",
+      "state": "DISCOVERED"
+    },
+    {
+      "invoice_uid": "0301452948_K26TYY_22233849",
+      "nbmst": "0301452948",
+      "nbten": "NGÂN HÀNG TMCP Á CHÂU",
+      "khmshdon": "1",
+      "khhdon": "K26TYY",
+      "shdon": "22233849",
+      "tdlap": "2026-04-25",
+      "tgtttbso": 13636,
+      "tgtthue": 1364,
+      "tgtttoan": 15000,
+      "mccqt": "",
+      "state": "DISCOVERED"
+    },
+    {
+      "invoice_uid": "001065008691_C26MYY_0000240",
+      "nbmst": "001065008691",
+      "nbten": "HỘ KINH DOANH NGUYỄN QUỐC GIAO",
+      "khmshdon": "2",
+      "khhdon": "C26MYY",
+      "shdon": "0000240",
+      "tdlap": "2026-05-09",
+      "tgtttbso": 5850000,
+      "tgtthue": 0,
+      "tgtttoan": 5850000,
+      "mccqt": "M2-26-LNW6T-00000000305",
+      "state": "DISCOVERED"
+    }
+  ]
+}

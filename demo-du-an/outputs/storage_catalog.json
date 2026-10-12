@@ -1,0 +1,68 @@
+{
+  "catalog_version": "1.1.0",
+  "generated_at": "2026-10-05T21:35:00",
+  "summary": {
+    "total_invoices": 3,
+    "mau_so_1_gtgt": 2,
+    "mau_so_2_ban_hang": 1,
+    "tong_doanh_so_chua_thue": 22758136,
+    "tong_tien_thue_gtgt": 1690814,
+    "tong_tien_thanh_toan": 24448950
+  },
+  "archived_invoices": [
+    {
+      "invoice_uid": "0101893254_C26TCK_0000302",
+      "mau_so": "1",
+      "loai_hoa_don": "Hóa đơn Giá trị Gia tăng",
+      "hinh_thuc_ma": "Có mã của CQT",
+      "mccqt": "00DB34DD7366F44BACB062F6A3F80E9CFB",
+      "ngay_lap": "2026-06-30",
+      "mst_ban": "0101893254",
+      "ten_ban": "CÔNG TY TNHH PHÁT TRIỂN CƠ KHÍ NAM HÀ NỘI",
+      "ky_hieu": "C26TCK",
+      "so_hd": "0000302",
+      "tong_chua_thue": 16894500,
+      "tien_thue_gtgt": 1689450,
+      "tong_thanh_toan": 18583950,
+      "pdf_relative_path": "outputs/HoaDon_MuaVao/2026/06/MauSo_1_GTGT/0101893254_CoKhiNamHaNoi/20260630_MS1_0101893254_C26TCK_0000302.pdf",
+      "xml_relative_path": "outputs/HoaDon_MuaVao/2026/06/MauSo_1_GTGT/0101893254_CoKhiNamHaNoi/20260630_MS1_0101893254_C26TCK_0000302.xml",
+      "state": "STORED"
+    },
+    {
+      "invoice_uid": "0301452948_K26TYY_22233849",
+      "mau_so": "1",
+      "loai_hoa_don": "Hóa đơn Giá trị Gia tăng",
+      "hinh_thuc_ma": "Không có mã của CQT",
+      "mccqt": "",
+      "ngay_lap": "2026-04-25",
+      "mst_ban": "0301452948",
+      "ten_ban": "NGÂN HÀNG TMCP Á CHÂU",
+      "ky_hieu": "K26TYY",
+      "so_hd": "22233849",
+      "tong_chua_thue": 13636,
+      "tien_thue_gtgt": 1364,
+      "tong_thanh_toan": 15000,
+      "pdf_relative_path": "outputs/HoaDon_MuaVao/2026/04/MauSo_1_GTGT/0301452948_NH_ACB/20260425_MS1_0301452948_K26TYY_22233849.pdf",
+      "xml_relative_path": "outputs/HoaDon_MuaVao/2026/04/MauSo_1_GTGT/0301452948_NH_ACB/20260425_MS1_0301452948_K26TYY_22233849.xml",
+      "state": "STORED"
+    },
+    {
+      "invoice_uid": "001065008691_C26MYY_0000240",
+      "mau_so": "2",
+      "loai_hoa_don": "Hóa đơn Bán hàng",
+      "hinh_thuc_ma": "Có mã của CQT (Hộ kinh doanh)",
+      "mccqt": "M2-26-LNW6T-00000000305",
+      "ngay_lap": "2026-05-09",
+      "mst_ban": "001065008691",
+      "ten_ban": "HỘ KINH DOANH NGUYỄN QUỐC GIAO",
+      "ky_hieu": "C26MYY",
+      "so_hd": "0000240",
+      "tong_chua_thue": 5850000,
+      "tien_thue_gtgt": 0,
+      "tong_thanh_toan": 5850000,
+      "pdf_relative_path": "outputs/HoaDon_MuaVao/2026/05/MauSo_2_BanHang/001065008691_HKD_NguyenQuocGiao/20260509_MS2_001065008691_C26MYY_0000240.pdf",
+      "xml_relative_path": "outputs/HoaDon_MuaVao/2026/05/MauSo_2_BanHang/001065008691_HKD_NguyenQuocGiao/20260509_MS2_001065008691_C26MYY_0000240.xml",
+      "state": "STORED"
+    }
+  ]
+}
