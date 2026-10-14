@@ -1,0 +1,90 @@
+{
+  "system_info": {
+    "project_name": "Tìm kiếm, sắp xếp và tải hóa đơn điện tử còn thiếu",
+    "version": "1.0.0",
+    "legal_framework": [
+      "Nghị định 123/2020/NĐ-CP",
+      "Thông tư 78/2021/TT-BTC",
+      "Luật Quản lý thuế số 38/2019/QH14"
+    ]
+  },
+  "validation_criteria": {
+    "tax_id": {
+      "standard_lengths": [10, 12, 14],
+      "regex_pattern": "^[0-9]{10,12}(-[0-9]{3})?$",
+      "description": "Mã số thuế doanh nghiệp (10 chữ số), Hộ kinh doanh theo CCCD (12 chữ số), hoặc chi nhánh/đơn vị phụ thuộc (14 ký tự)"
+    },
+    "invoice_number": {
+      "length": 7,
+      "format": "zfill_7",
+      "regex_pattern": "^[0-9]{1,7}$",
+      "description": "Số hóa đơn tối đa 7 chữ số, chuẩn hóa hiển thị đủ 7 chữ số (ví dụ 0000302)"
+    },
+    "invoice_symbol": {
+      "forms": {
+        "1": "Hóa đơn Giá trị Gia tăng (Mẫu số 1)",
+        "2": "Hóa đơn Bán hàng (Mẫu số 2)"
+      },
+      "code_patterns": {
+        "C": "Có mã của Cơ quan thuế",
+        "K": "Không có mã của Cơ quan thuế (Ngân hàng, Viễn thông, Điện lực)",
+        "M": "Khởi tạo từ máy tính tiền có kết nối CQT"
+      }
+    },
+    "math_tolerance": {
+      "max_rounding_error_vnd": 10,
+      "formula": "|total_payment - (amount_before_tax + tax_amount)| <= 10",
+      "allow_negative_values": true,
+      "negative_value_purpose": "Hóa đơn điều chỉnh giảm doanh thu và thuế GTGT"
+    }
+  },
+  "printing_and_storage_params": {
+    "print_engine": "Chromium Native Print Engine / Microsoft Print to PDF",
+    "page_format": "A4",
+    "orientation": "portrait",
+    "margins_mm": {
+      "top": 8,
+      "bottom": 8,
+      "left": 6,
+      "right": 6
+    },
+    "print_background": true,
+    "file_naming_convention": "{YYYYMMDD}_MS{MauSo}_{MST}_{KyHieu}_{SoHD}.{ext}",
+    "folder_structure": "outputs/HoaDon_LuuTru/{YYYY}/{MM}/MauSo_{MauSo_Text}/{MST}_{TenNhaCungCap}/",
+    "rate_limit_delay_seconds": 1.5,
+    "max_retries": 3
+  },
+  "tax_risk_blacklist": [
+    {
+      "mst": "0109999999",
+      "company_name": "CÔNG TY TNHH THƯƠNG MẠI MA XUẤT KHẨU KHỐNG",
+      "reason": "Doanh nghiệp có thông báo không hoạt động tại địa chỉ đăng ký (Bỏ trốn)",
+      "risk_level": "CRITICAL",
+      "action": "BLOCK_AND_FLAG_HITL"
+    },
+    {
+      "mst": "0308888888",
+      "company_name": "CÔNG TY CP DỊCH VỤ ẢO VIỆT",
+      "reason": "Cơ quan thuế tạm dừng mã số thuế do nghi vấn mua bán hóa đơn khống",
+      "risk_level": "HIGH",
+      "action": "BLOCK_AND_FLAG_HITL"
+    }
+  ],
+  "trusted_suppliers_whitelist": [
+    {
+      "mst": "0100107934",
+      "name": "TẬP ĐOÀN XĂNG DẦU VIỆT NAM (PETROLIMEX)",
+      "service": "Nhiên liệu xăng dầu"
+    },
+    {
+      "mst": "0100684740",
+      "name": "TẬP ĐOÀN CÔNG NGHIỆP - VIỄN THÔNG QUÂN ĐỘI (VIETTEL)",
+      "service": "Cước viễn thông cáp quang"
+    },
+    {
+      "mst": "0301452948",
+      "name": "NGÂN HÀNG TMCP Á CHÂU (ACB)",
+      "service": "Phí quản lý tài khoản ngân hàng"
+    }
+  ]
+}

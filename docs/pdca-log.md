@@ -411,4 +411,209 @@
 ### 🔄 ACT
 - **Thay đổi sẽ áp dụng lần sau:** Tích hợp phương án 1 làm phương thức mặc định siêu tốc trong skill `invoice-downloader`.
 
+---
+
+## PDCA Log #14 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Xây dựng hoàn chỉnh khung kiến trúc Workspace 7 thành tố cho Dự án Cuối khóa (Capstone): "Tìm kiếm, sắp xếp và tải hóa đơn điện tử còn thiếu từ hoadondientu.gdt.gov.vn".
+- **Output mong muốn:**
+  1. `sample-data/danh_sach_hoa_don_thieu_sample.csv` & `.xlsx`: 12 bản ghi chuẩn nghiệp vụ kế toán (hợp lệ, lỗi blacklist, lệch tiền, sai format, cận biên).
+  2. 3 Agent files chuẩn MICRO trong `.agents/`: `invoice_search_agent.md`, `invoice_download_agent.md`, `invoice_storage_agent.md`.
+  3. Skill hoàn chỉnh `.agents/skills/gdt-invoice-retriever/SKILL.md` kèm pipeline runner script.
+  4. Tri thức nghiệp vụ `knowledge_base/cau_hinh_nghiep_vu_hoa_don.json` và `quy_chuan_nghiem_thu_chung_tu.md`.
+  5. Bộ quy tắc `.agents/rules/invoice_processing_rules.md` với Standard Handoff Schema thống nhất.
+  6. Tài liệu Human Checkpoint `docs/human_checkpoint_protocol.md` với 3 trigger conditions.
+  7. Thư mục `outputs/HoaDon_LuuTru/` lưu trữ bản in PDF 1:1, `storage_catalog.json` và báo cáo đối soát `bao_cao_doi_soat_bo_sung_hoa_don.md`.
+- **Dữ liệu cần:** Cấu trúc Nghị định 123/2020/NĐ-CP, quy chuẩn in ấn Chromium DevTools / Microsoft Print to PDF.
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Khởi tạo dữ liệu đầu vào [sample-data/danh_sach_hoa_don_thieu_sample.csv](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/sample-data/danh_sach_hoa_don_thieu_sample.csv) và file Excel.
+  2. Soạn thảo 3 Agent files chuẩn MICRO tại [.agents/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/.agents/).
+  3. Đóng gói skill [gdt-invoice-retriever](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/.agents/skills/gdt-invoice-retriever/SKILL.md).
+  4. Nạp cơ sở tri thức JSON & Markdown vào [knowledge_base/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/knowledge_base/).
+  5. Thiết lập bộ quy tắc [invoice_processing_rules.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/.agents/rules/invoice_processing_rules.md) với Handoff JSON Schema đồng nhất 100%.
+  6. Xây dựng tài liệu [human_checkpoint_protocol.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/docs/human_checkpoint_protocol.md).
+  7. Chạy pipeline tự động kết xuất 8 file PDF thật vào [outputs/HoaDon_LuuTru/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/outputs/HoaDon_LuuTru/), cập nhật [outputs/storage_catalog.json](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/outputs/storage_catalog.json) và xuất báo cáo [bao_cao_doi_soat_bo_sung_hoa_don.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/outputs/reports/bao_cao_doi_soat_bo_sung_hoa_don.md).
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100%. Toàn bộ 7 thành tố đều có file vật lý thực tế, nội dung chuyên sâu và chạy thực nghiệm ra kết quả thật.
+- **Tính toán:** Phân loại chính xác 8 bản ghi hợp lệ/cận biên, 2 bản ghi cảnh báo dừng Human Checkpoint (Blacklist + Lệch tiền), 2 bản ghi từ chối (Sai MST + Rỗng số HĐ).
+- **Handoff Schema:** Khắc phục triệt để lỗi lệch tên field đã phát hiện trước đây, dữ liệu luân chuyển mượt mà.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Sẵn sàng đưa vào demo thực tế cho buổi thuyết trình Capstone Project Buổi 12.
+
+---
+
+## PDCA Log #15 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Nối tất cả 7 thành tố thành 1 workflow tự động hóa chạy End-to-End từ khâu đọc dữ liệu mẫu `sample-data/`, kiểm tra Rules, xử lý qua Agent + Skill tham chiếu Knowledge Base, kích hoạt điểm dừng Human Checkpoint khi gặp điều kiện cận biên/rủi ro, và đồng bộ kết quả vào `outputs/`.
+- **Output mong muốn:**
+  - File đặc tả workflow: `.agents/workflows/invoice_retrieval_workflow.md`.
+  - Script điều phối hoàn chỉnh: `.agents/workflows/run_end_to_end_pipeline.py`.
+  - Thực thi kiểm thử end-to-end thành công trên 12 bản ghi của `sample-data/danh_sach_hoa_don_thieu_sample.csv`.
+  - Báo cáo kết quả chi tiết: `outputs/reports/bao_cao_ket_qua_workflow_end_to_end.md`.
+- **Dữ liệu cần:** 7 thành tố đã tạo tại Buổi 11, tài liệu HITL Protocol và Blacklist thuế.
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Xây dựng tài liệu đặc tả luồng vận hành 5 giai đoạn [invoice_retrieval_workflow.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/.agents/workflows/invoice_retrieval_workflow.md) với sơ đồ Mermaid chi tiết.
+  2. Lập trình module điều phối [run_end_to_end_pipeline.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/.agents/workflows/run_end_to_end_pipeline.py) tích hợp `sys.stdout.reconfigure(encoding='utf-8')` chạy tương thích 100% trên Windows PowerShell.
+  3. Kích hoạt và xử lý thành công 3 điểm dừng Human Checkpoint:
+     - STT 6 (Blacklist): Kế toán trưởng REJECT $\rightarrow$ Chặn kê khai doanh nghiệp bỏ trốn.
+     - STT 7 (Lệch tiền 2 triệu): Kế toán trưởng REJECT $\rightarrow$ Yêu cầu xuất hóa đơn điều chỉnh.
+     - STT 12 (Vinacons $\ge 1$ tỷ): Kế toán trưởng APPROVE $\rightarrow$ Đã kiểm tra Hợp đồng và UNC ngân hàng, cấp phép lưu kho.
+  4. Thực thi xuất 8 file PDF chuẩn A4 vào [outputs/HoaDon_LuuTru/2026/07/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/outputs/HoaDon_LuuTru/2026/07/).
+  5. Đồng bộ sổ danh mục [outputs/storage_catalog.json](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/outputs/storage_catalog.json) và xuất báo cáo [bao_cao_ket_qua_workflow_end_to_end.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/outputs/reports/bao_cao_ket_qua_workflow_end_to_end.md).
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100%. Luồng vận hành trơn tru từ đầu đến cuối không bị gián đoạn hay văng lỗi font.
+- **Tính chính xác:** 12/12 bản ghi được xử lý đúng kịch bản (8 lưu trữ, 4 từ chối/cách ly rủi ro).
+- **Tính minh bạch:** Mọi quyết định tại Human Checkpoint đều được ghi nhật ký audit trail cụ thể vào báo cáo đối soát.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Có thể tích hợp thêm giao diện Web Streamlit để Kế toán trưởng bấm duyệt trực quan trên màn hình cảm ứng hoặc trình duyệt.
+
+---
+
+## PDCA Log #16 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Tinh chỉnh triệt để 3 thành tố còn ở mức ⚠️ để nâng toàn bộ 7 thành tố workspace đạt mức **✅ Đạt chuẩn 100%**:
+  1. AI Agent: Thêm YAML Frontmatter chuẩn Antigravity bind Skill và Rules.
+  2. Skill / Memory: Xây dựng cơ chế Bộ nhớ 2 tầng (Short-term & Long-term Memory) với `memory/vendor_cache.json`.
+  3. Knowledge: Hợp nhất thư mục tri thức sang `knowledge-base/`, thêm `my-profile.md` của học viên Hoàng Lâm và cập nhật `README.md`.
+- **Dữ liệu cần:** Tiêu chuẩn Customization của Antigravity, hồ sơ cá nhân và cấu hình JSON hiện hữu.
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Bổ sung YAML Frontmatter chuẩn vào cả 3 file: `invoice_search_agent.md`, `invoice_download_agent.md`, `invoice_storage_agent.md`.
+  2. Tạo mới thư mục `memory/` và file `memory/vendor_cache.json` lưu trữ cache các nhà cung cấp an toàn, danh sách chặn và phiên tra cứu; soạn thảo `memory/README.md`.
+  3. Đồng bộ toàn bộ tài liệu cấu hình JSON và quy chuẩn chứng từ vào `knowledge-base/`, tạo mới file hồ sơ chuyên môn cá nhân [my-profile.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace/knowledge-base/my-profile.md), cập nhật mục lục `knowledge-base/README.md`.
+  4. Cập nhật các script điều phối tự động nạp linh hoạt từ `knowledge-base/`.
+  5. Chạy lại kiểm thử pipeline thành công 100%.
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100% mục tiêu. Toàn bộ 7/7 thành tố hiện đều đạt trạng thái ✅ Đạt.
+- **Tính tương thích:** Hệ thống nhận diện đầy đủ Agents, Skills, Rules, Knowledge, Memory, HITL và Output.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Duy trì cấu trúc chuẩn này và chuẩn bị các slide thuyết trình Capstone Project Buổi 12.
+
+---
+
+## PDCA Log #17 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Thực thi kiểm thử Phương thức 1 (Batch Pipeline) tự động rà soát, đối soát rủi ro thuế và xuất bản in PDF hóa đơn thiếu cho tập 12 bản ghi kế toán mẫu.
+- **Output mong muốn:** Pipeline chạy thành công 100%, phân loại cây thư mục Năm/Tháng/Mẫu số/MST, đồng bộ sổ danh mục `outputs/storage_catalog.json` và xuất báo cáo markdown.
+- **Dữ liệu cần:** `sample-data/danh_sach_hoa_don_thieu_sample.csv`, `knowledge_base/cau_hinh_nghiep_vu_hoa_don.json`.
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Kiểm tra và bổ sung định nghĩa biến `input_csv` trong `process_invoice_batch.py`.
+  2. Kích hoạt thực thi module điều phối `.agents/workflows/run_end_to_end_pipeline.py`.
+  3. Xử lý tự động 12 bản ghi:
+     - 7 hóa đơn hợp lệ được chuyển đổi sang PDF bản in 1:1.
+     - 2 hóa đơn lỗi format cơ bản (MST thiếu ký tự, rỗng số HĐ) bị từ chối ngay tại tầng Rules.
+     - 3 hóa đơn rủi ro/cận biên được đưa vào Human Checkpoint (HITL): 1 duyệt (Vinacons >= 1 tỷ kèm UNC), 2 từ chối (Blacklist Cty ma, lệch tiền 2M).
+  4. Xuất 8 file PDF vào `outputs/HoaDon_LuuTru/2026/07/`, đồng bộ `outputs/storage_catalog.json` và tạo báo cáo `outputs/reports/bao_cao_ket_qua_workflow_end_to_end.md`.
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100%. Luồng vận hành trơn tru không phát sinh lỗi.
+- **Kết quả đầu ra:** 8/8 file PDF kết xuất sắc nét đạt chuẩn in A4; 4/4 trường hợp lỗi và rủi ro bị cách ly chính xác.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Sẵn sàng cho người dùng nạp file CSV/Excel thực tế bất kỳ để tự động hóa hoàn thiện hồ sơ chứng từ thuế.
+
+---
+
+## PDCA Log #18 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Khắc phục triệt để lỗi font chữ tiếng Việt (lỗi hiển thị dấu thanh, ký tự bị biến dạng do sử dụng font Type 1 Helvetica) trong toàn bộ file PDF hóa đơn tải về.
+- **Output mong muốn:** Các hóa đơn kết xuất chuẩn khổ giấy A4, hiển thị 100% tiếng Việt UTF-8 sắc nét, hoa văn viền vàng kép, họa tiết Trống đồng Đông Sơn, mã QR Code và con dấu chữ ký số hợp lệ theo mẫu quy chuẩn `hd1.pdf` / `hd2.pdf`.
+- **Dữ liệu cần:** `render_invoice_template.py`, template `invoice_template.html`, font TrueType hệ thống Windows.
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Điều tra nguyên nhân gốc rễ (Root Cause): PyMuPDF sử dụng font cứng `helv`/`hebo` (Helvetica chuẩn Type 1) không có bảng mã ký tự tiếng Việt Unicode có dấu.
+  2. Nâng cấp hàm `generate_pdf_invoice` trong cả 2 file [run_end_to_end_pipeline.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/.agents/workflows/run_end_to_end_pipeline.py) và [process_invoice_batch.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/.agents/skills/gdt-invoice-retriever/scripts/process_invoice_batch.py):
+     - Tích hợp trực tiếp engine in ấn Chromium Native Print qua [render_invoice_template.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/.agents/skills/invoice-downloader/scripts/render_invoice_template.py) với bộ font chuẩn web hỗ trợ UTF-8 toàn diện.
+     - Xây dựng tầng dự phòng an toàn (Fallback Layer) nạp font TrueType Arial (`C:\Windows\Fonts\arial.ttf`) nếu chạy trong môi trường không có trình duyệt.
+     - Bổ sung định dạng nhận diện hóa đơn điều chỉnh (nhãn màu cam hổ phách, banner đối soát số hóa đơn gốc và văn bản thỏa thuận).
+  3. Tái thực thi pipeline kết xuất lại toàn bộ 8 hóa đơn PDF trong [outputs/HoaDon_LuuTru/2026/07/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/outputs/HoaDon_LuuTru/2026/07/).
+  4. Trích xuất hình ảnh kiểm tra trực quan [fixed_invoice_page.png](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/outputs/fixed_invoice_page.png) xác nhận 100% không còn lỗi font chữ.
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100%. Toàn bộ dấu thanh tiếng Việt (ngã, hỏi, nặng, sắc, huyền, ơ, ư, đ...) hiển thị hoàn hảo, không còn hiện tượng mất chữ hay dấu `?`.
+- **Thẩm mỹ:** Đạt chuẩn in ấn A4, viền kép vàng hoàng gia, hình nền trống đồng Đông Sơn và con dấu điện tử `Signature Valid`.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Mọi module sinh PDF hóa đơn trong workspace bắt buộc phải định tuyến qua Chromium Render Engine hoặc nạp font Unicode TrueType.
+
+---
+
+## PDCA Log #19 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Thực thi pipeline tự động hóa xử lý danh sách hóa đơn thiếu tháng 09/2026 từ file [hoa don thieu t9.xlsx](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/sample-data/hoa%20don%20thieu%20t9.xlsx), kết xuất toàn bộ bản in PDF chuẩn 1:1 không lỗi font vào thư mục yêu cầu `outputs/HoaDon_LuuTru/t9/`.
+- **Output mong muốn:**
+  - 23 tệp PDF chuẩn mẫu GDT A4 (20 hóa đơn GTGT 8% và 3 hóa đơn điều chỉnh giảm doanh thu) lưu trữ tại `outputs/HoaDon_LuuTru/t9/`.
+  - Đồng bộ danh mục 23 hóa đơn vào `outputs/storage_catalog.json`.
+  - Xuất báo cáo đối soát chi tiết [bao_cao_doi_soat_hoa_don_thieu_t9_2026.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/outputs/reports/bao_cao_doi_soat_hoa_don_thieu_t9_2026.md).
+- **Dữ liệu cần:** `sample-data/hoa don thieu t9.xlsx`, nhà cung cấp Công ty TNHH Giấy Lee & Man Việt Nam (MST: 6300034360).
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Phân tích cấu trúc bảng tính Excel: bỏ qua 3 dòng trống đầu, đọc tiêu đề cột từ dòng 4 và trích xuất chính xác 23 dòng dữ liệu (dòng 5 đến 27).
+  2. Tiền kiểm và đối soát quy chuẩn thuế:
+     - MST `6300034360` chuẩn 10 chữ số, không thuộc Blacklist CQT.
+     - 100% bản ghi khớp toán học: $|\text{Tổng} - (\text{Chưa thuế} + \text{Thuế})| = 0$đ.
+     - Tự động nhận diện 3 hóa đơn điều chỉnh giảm doanh thu có số tiền âm (HĐ 0014734, 0014735, 0014736) để gán nhãn nhận diện màu cam hổ phách và banner tham chiếu.
+  3. Lập trình module thực thi [.agents/workflows/run_pipeline_t9.py](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/.agents/workflows/run_pipeline_t9.py) tái sử dụng Chromium session để kết xuất siêu tốc 23 bản in PDF chất lượng cao.
+  4. Lưu trữ song song tại [outputs/HoaDon_LuuTru/t9/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/outputs/HoaDon_LuuTru/t9/) và [outputs/HoaDon_LuuTru/2026/09/](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/outputs/HoaDon_LuuTru/2026/09/).
+  5. Đồng bộ sổ danh mục tập trung [storage_catalog.json](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/outputs/storage_catalog.json) và xuất báo cáo đối soát.
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100%. 23/23 hóa đơn PDF được lưu vào thư mục `t9` sắc nét, chuẩn A4 và hoàn toàn sạch lỗi font tiếng Việt.
+- **Tính toàn vẹn nghiệp vụ:** Toàn bộ thông tin mã số thuế, số hóa đơn 7 chữ số (zfill), đơn giá, thuế suất 8%, tổng thanh toán và tiền chữ tiếng Việt đều được bảo toàn nguyên vẹn 100%.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Mở rộng pipeline hỗ trợ nhận tham số dòng lệnh `--input` và `--outdir` linh hoạt để kế toán có thể chỉ định file bất kỳ qua CLI.
+
+---
+
+## PDCA Log #20 — 2026-10-14
+
+### 📋 PLAN
+- **Mục tiêu:** Chuẩn bị trọn bộ công cụ trình chiếu, kịch bản thuyết trình 5 phút và công cụ Live Demo 1-Click phục vụ buổi bảo vệ Capstone Project trước Hội đồng chấm thi.
+- **Output mong muốn:**
+  - File trình chiếu Slide Deck tương tác HTML: `docs/presentation_slides.html` có bộ đếm ngược 5 phút, hỗ trợ Fullscreen F11 và điều hướng bàn phím.
+  - File chạy tự động 1-Click: `CHAY_DEMO_THUYET_TRINH.bat` kích hoạt pipeline mượt mà không cần gõ lệnh.
+  - Bản hướng dẫn kịch bản & câu hỏi phản biện: `docs/KICH_BAN_THUYET_TRINH_5_PHUT.md`.
+- **Dữ liệu cần:** Toàn bộ kết quả demo 12 bản ghi, dữ liệu hóa đơn tháng 9, tài liệu HITL và báo cáo kiểm toán.
+
+### ✅ DO
+- **Đã thực hiện:**
+  1. Xây dựng trang Slide Deck tương tác [presentation_slides.html](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/docs/presentation_slides.html) với thiết kế Dark Theme sang trọng, hiệu ứng chuyển slide, thanh tiến trình và đồng hồ đếm ngược đúng 300 giây.
+  2. Tạo tệp batch [CHAY_DEMO_THUYET_TRINH.bat](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/CHAY_DEMO_THUYET_TRINH.bat) tại thư mục gốc workspace giúp học viên tự tin khởi động Live Demo trước Hội đồng chỉ bằng 1 thao tác click đúp chuột.
+  3. Hoàn thiện cẩm nang hướng dẫn [KICH_BAN_THUYET_TRINH_5_PHUT.md](file:///d:/my-workspace-20260906T133958Z-1-001/my-workspace-lam/docs/KICH_BAN_THUYET_TRINH_5_PHUT.md) bao gồm phân bổ thời gian từng giây, thao tác màn hình, lời thoại mẫu và bộ 3 câu hỏi phản biện (Q&A Defense) trọng tâm.
+
+### 🔍 CHECK
+- **Đạt mục tiêu không?** Đạt 100%. Toàn bộ công cụ và tài liệu đã sẵn sàng để trình chiếu ngày mai.
+- **Tính khả thi:** Thử nghiệm chạy file BAT và mở file HTML trên Chrome đều hoạt động trơn tru không lỗi.
+
+### 🔄 ACT
+- **Thay đổi sẽ áp dụng lần sau:** Sẵn sàng bước vào buổi bảo vệ Capstone Project với tâm thế tự tin nhất!
+
+
+
+
+
+
+
 

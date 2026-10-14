@@ -1,0 +1,80 @@
+{
+  "memory_version": "1.0.0",
+  "last_updated": "2026-10-14T05:25:00",
+  "description": "Long-term Memory cache lưu trữ lịch sử đối soát nhà cung cấp, phiên đăng nhập và định danh tra cứu hóa đơn",
+  "verified_vendors_cache": {
+    "0101893254": {
+      "name": "CÔNG TY TNHH PHÁT TRIỂN CƠ KHÍ NAM HÀ NỘI",
+      "status": "VERIFIED_SAFE",
+      "default_form": "1",
+      "last_invoices": ["0000302"],
+      "last_checked": "2026-10-14"
+    },
+    "0301452948": {
+      "name": "NGÂN HÀNG TMCP Á CHÂU (ACB)",
+      "status": "VERIFIED_SAFE",
+      "default_form": "1",
+      "note": "Hóa đơn đặc thù không mã CQT (K26TYY)",
+      "last_invoices": ["22233849"],
+      "last_checked": "2026-10-14"
+    },
+    "001065008691": {
+      "name": "HỘ KINH DOANH NGUYỄN QUỐC GIAO",
+      "status": "VERIFIED_SAFE",
+      "default_form": "2",
+      "note": "Hộ KD máy tính tiền theo CCCD (C26MYY)",
+      "last_invoices": ["0000240"],
+      "last_checked": "2026-10-14"
+    },
+    "0100107934": {
+      "name": "TẬP ĐOÀN XĂNG DẦU VIỆT NAM (PETROLIMEX)",
+      "status": "VERIFIED_SAFE",
+      "default_form": "1",
+      "last_invoices": ["0045120"],
+      "last_checked": "2026-10-14"
+    },
+    "0100684740": {
+      "name": "TẬP ĐOÀN CÔNG NGHIỆP - VIỄN THÔNG QUÂN ĐỘI (VIETTEL)",
+      "status": "VERIFIED_SAFE",
+      "default_form": "1",
+      "last_invoices": ["0891234"],
+      "last_checked": "2026-10-14"
+    },
+    "0312456789": {
+      "name": "CÔNG TY TNHH PHẦN MỀM THÔNG MINH VIỆT",
+      "status": "VERIFIED_SAFE",
+      "default_form": "1",
+      "note": "Sản phẩm phần mềm không chịu thuế GTGT",
+      "last_invoices": ["0000889"],
+      "last_checked": "2026-10-14"
+    },
+    "0105678912": {
+      "name": "CÔNG TY TNHH CÔNG NGHỆ TỰ ĐỘNG HÓA THĂNG LONG",
+      "status": "VERIFIED_SAFE",
+      "default_form": "1",
+      "note": "Hóa đơn điều chỉnh âm",
+      "last_invoices": ["0000456"],
+      "last_checked": "2026-10-14"
+    },
+    "0101234567": {
+      "name": "CÔNG TY TNHH ĐẦU TƯ & XÂY DỰNG VINACONS",
+      "status": "APPROVED_BY_CHIEF_ACCOUNTANT",
+      "default_form": "1",
+      "note": "Hóa đơn giá trị lớn >= 1 tỷ, đã duyệt HITL",
+      "last_invoices": ["0000999"],
+      "last_checked": "2026-10-14"
+    }
+  },
+  "blocked_vendors_cache": {
+    "0109999999": {
+      "name": "CÔNG TY TNHH THƯƠNG MẠI MA XUẤT KHẨU KHỐNG",
+      "status": "BLOCKED_CRITICAL",
+      "reason": "Doanh nghiệp có thông báo không hoạt động tại địa chỉ đăng ký (Bỏ trốn)"
+    }
+  },
+  "query_period_memory": {
+    "latest_batch_id": "BATCH_20261014_001",
+    "completed_periods": ["2026-07"],
+    "total_invoices_retrieved": 8
+  }
+}
